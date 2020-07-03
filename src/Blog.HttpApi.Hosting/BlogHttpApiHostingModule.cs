@@ -5,6 +5,7 @@ using Volo.Abp;
 using Volo.Abp.AspNetCore.Mvc;
 using Volo.Abp.Autofac;
 using Volo.Abp.Modularity;
+using Blog.EntityFrameworkCore;
 
 namespace Blog.HttpApi.Hosting
 {

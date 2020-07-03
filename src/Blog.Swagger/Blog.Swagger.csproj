@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
-    <PackageReference Include="Volo.Abp.AspNetCore" Version="3.0.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore" Version="3.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Blog.Domain\Blog.Domain.csproj" />

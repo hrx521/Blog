@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Blog.Data;
 using Volo.Abp.DependencyInjection;
+using Blog.EntityFrameworkCore.EntityFrameworkCore;
 
 namespace Blog.EntityFrameworkCore
 {

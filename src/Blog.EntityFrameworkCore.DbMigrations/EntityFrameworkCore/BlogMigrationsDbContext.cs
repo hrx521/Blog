@@ -10,7 +10,7 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 
-namespace Blog.EntityFrameworkCore
+namespace Blog.EntityFrameworkCore.EntityFrameworkCore
 {
     /* This DbContext is only used for database migrations.
      * It is not used on runtime. See BlogDbContext for the runtime DbContext.
@@ -31,18 +31,18 @@ namespace Blog.EntityFrameworkCore
 
             /* Include modules to your migration db context */
 
-            builder.ConfigurePermissionManagement();
-            builder.ConfigureSettingManagement();
-            builder.ConfigureBackgroundJobs();
-            builder.ConfigureAuditLogging();
-            builder.ConfigureIdentity();
-            builder.ConfigureIdentityServer();
-            builder.ConfigureFeatureManagement();
-            builder.ConfigureTenantManagement();
+            //builder.ConfigurePermissionManagement();
+            //builder.ConfigureSettingManagement();
+            //builder.ConfigureBackgroundJobs();
+            //builder.ConfigureAuditLogging();
+            //builder.ConfigureIdentity();
+            //builder.ConfigureIdentityServer();
+            //builder.ConfigureFeatureManagement();
+            //builder.ConfigureTenantManagement();
 
             /* Configure your own tables/entities inside the ConfigureBlog method */
 
-            builder.ConfigureBlog();
+            builder.Configure();
         }
     }
 }

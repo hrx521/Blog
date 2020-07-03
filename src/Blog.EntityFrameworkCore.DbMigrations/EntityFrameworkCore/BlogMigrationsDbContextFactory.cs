@@ -1,9 +1,10 @@
 ﻿using System.IO;
+using Blog.EntityFrameworkCore.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace Blog.EntityFrameworkCore
+namespace Blog.EntityFrameworkCore.DbMigrations.EntityFrameworkCore
 {
     /* This class is needed for EF Core console commands
      * (like Add-Migration and Update-Database commands) */
@@ -11,7 +12,7 @@ namespace Blog.EntityFrameworkCore
     {
         public BlogMigrationsDbContext CreateDbContext(string[] args)
         {
-            BlogEfCoreEntityExtensionMappings.Configure();
+            //BlogEfCoreEntityExtensionMappings.Configure();
 
             var configuration = BuildConfiguration();
 
@@ -25,7 +26,7 @@ namespace Blog.EntityFrameworkCore
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: false);
+                .AddJsonFile("appsettings.json", optional: true,reloadOnChange:true);
 
             return builder.Build();
         }
