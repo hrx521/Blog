@@ -1,5 +1,6 @@
 ﻿using Blog.Application.Blog;
 using Blog.Application.Contracts.Blog;
+using Blog.ToolKits.Base;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,24 +19,44 @@ namespace Blog.HttpApi
         {
             this.blogService = blogService;
         }
+        /// <summary>
+        /// 新增博客
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
-        public async Task<bool> InsertBlogAsync([FromBody]PostDto dto)
+        public async Task<ServiceTResult<string>> InsertBlogAsync([FromBody]PostDto dto)
         {
             return await this.blogService.InsertBlogAsync(dto);
         }
-
+        /// <summary>
+        /// 查询博客
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<PostDto> GetBlogAsync(int id)
+        public async Task<ServiceTResult<PostDto>> GetBlogAsync(int id)
         {
             return await this.blogService.GetBlogAsync(id);
         }
+        /// <summary>
+        /// 更新博客
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPut]
-        public async Task<bool> UpdateBlogAsync(int id,PostDto dto)
+        public async Task<ServiceTResult<string>> UpdateBlogAsync(int id,PostDto dto)
         {
             return await this.blogService.UpdateBlogAsync(id, dto);
         }
+        /// <summary>
+        /// 删除博客
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete]
-        public async Task<bool> DeleteBlogAsync(int id)
+        public async Task<ServiceResult> DeleteBlogAsync(int id)
         {
             return await this.blogService.DeleteBlogAsync(id);
         }

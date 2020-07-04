@@ -1,6 +1,7 @@
 ﻿using Blog.Application.Contracts.Blog;
 using Blog.Domain.Blog;
 using Blog.Domain.Blog.Repositories;
+using Blog.ToolKits.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,14 +17,15 @@ namespace Blog.Application.Blog.Impl
         {
             this.posts = posts;
         }
-        public async Task<bool> DeleteBlogAsync(int Id)
+        public async Task<ServiceResult> DeleteBlogAsync(int Id)
         {
             await this.posts.DeleteAsync(Id);
-            return true;
+            return new ServiceResult();
         }
 
-        public async Task<bool> InsertBlogAsync(PostDto dto)
+        public async Task<ServiceTResult<string>> InsertBlogAsync(PostDto dto)
         {
+            var result = new ServiceTResult<string>();
             var entity = new Post
             {
                 Title = dto.Title,
@@ -36,13 +38,26 @@ namespace Blog.Application.Blog.Impl
             };
 
             var post = await this.posts.InsertAsync(entity);
-            return post != null;
+            if (post == null)
+            {
+                result.IsFailed("添加失败");
+                return result;
+            }
+
+            result.IsSuccess("添加成功");
+            return result;
         }
         
-        public async Task<PostDto> GetBlogAsync(int Id)
+        public async Task<ServiceTResult<PostDto>> GetBlogAsync(int Id)
         {
+            var result = new ServiceTResult<PostDto>();
             var post = await this.posts.GetAsync(Id);
-            return new PostDto
+            if (post == null)
+            {
+                result.IsFailed("文章不存在");
+                return result;
+            }
+            var postDto = new PostDto
             {
                 Title = post.Title,
                 Author = post.Author,
@@ -52,12 +67,20 @@ namespace Blog.Application.Blog.Impl
                 CategoryId = post.CategoryId,
                 CreationTime = post.CreationTime
             };
+            result.IsSuccess(postDto);
+            return result;
         }
 
-        public async Task<bool> UpdateBlogAsync(int Id, PostDto dto)
+        public async Task<ServiceTResult<string>> UpdateBlogAsync(int Id, PostDto dto)
         {
-            var post = await this.posts.GetAsync(Id);
+            var result = new ServiceTResult<string>();
 
+            var post = await this.posts.GetAsync(Id);
+            if(post==null)
+            {
+                result.IsFailed("指定ID的文章不存在");
+                return result;
+            }
             post.Title = dto.Title;
             post.Author = dto.Author;
             post.Url = dto.Url;
@@ -68,7 +91,8 @@ namespace Blog.Application.Blog.Impl
 
             await this.posts.UpdateAsync(post);
 
-            return true;
+            result.IsSuccess("更新成功");
+            return result;
         }
     }
 }

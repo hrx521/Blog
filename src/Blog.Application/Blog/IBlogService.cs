@@ -1,4 +1,5 @@
 ﻿using Blog.Application.Contracts.Blog;
+using Blog.ToolKits.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,9 +9,9 @@ namespace Blog.Application.Blog
 {
     public interface IBlogService
     {
-        Task<bool> InsertBlogAsync(PostDto dto);
-        Task<bool> UpdateBlogAsync(int Id,PostDto dto);
-        Task<bool> DeleteBlogAsync(int Id);
-        Task<PostDto> GetBlogAsync(int Id);
+        Task<ServiceTResult<string>> InsertBlogAsync(PostDto dto);
+        Task<ServiceTResult<string>> UpdateBlogAsync(int Id,PostDto dto);
+        Task<ServiceResult> DeleteBlogAsync(int Id);
+        Task<ServiceTResult<PostDto>> GetBlogAsync(int Id);
     }
 }
