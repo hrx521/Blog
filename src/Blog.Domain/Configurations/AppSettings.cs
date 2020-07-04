@@ -13,7 +13,7 @@ namespace Blog.Domain.Configurations
         {
             var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", true, true);
-            builder.Build();
+            _config = builder.Build();
         }
         public static string EnableDb => _config["ConnectionStrings:Enable"];
 
