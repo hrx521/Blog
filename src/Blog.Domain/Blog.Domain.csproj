@@ -18,4 +18,8 @@
     <PackageReference Include="Volo.Abp.TenantManagement.Domain" Version="3.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Domain.Shared\Blog.Domain.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
