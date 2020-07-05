@@ -24,4 +24,8 @@
     <Content Remove="Localization\Blog\*.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Blog.Domain\Blog.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

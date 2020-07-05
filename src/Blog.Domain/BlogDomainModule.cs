@@ -4,7 +4,7 @@ using Volo.Abp.Modularity;
 
 namespace Blog.Domain
 {
-    [DependsOn(typeof(AbpIdentityDomainModule),typeof(BlogDomainSharedModule))]
+    [DependsOn(typeof(AbpIdentityDomainModule))]
     public class BlogDomainModule : AbpModule
     {
 
