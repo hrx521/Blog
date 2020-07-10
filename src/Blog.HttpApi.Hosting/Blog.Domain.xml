@@ -18,5 +18,11 @@
             <param name="tags"></param>
             <returns></returns>
         </member>
+        <member name="P:Blog.Domain.Configurations.AppSettings.ApiVersion">
+            AppSettings.cs
+             <summary>
+             ApiVersion
+             </summary>
+        </member>
     </members>
 </doc>

@@ -18,5 +18,12 @@ namespace Blog.Domain.Configurations
         public static string EnableDb => _config["ConnectionStrings:Enable"];
 
         public static string ConnectionString => _config.GetConnectionString(EnableDb);
+
+        
+        ///AppSettings.cs
+        /// <summary>
+        /// ApiVersion
+        /// </summary>
+        public static string ApiVersion => _config["ApiVersion"];
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Blog.Application.Blog;
 using Blog.Application.Contracts.Blog;
+using Blog.Domain.Shared;
 using Blog.ToolKits.Base;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,7 @@ namespace Blog.HttpApi
 {
     [ApiController]
     [Route("Controller")]
+    [ApiExplorerSettings(GroupName =Grouping.GroupName_v1)]
     public class BlogController
     {
         private readonly IBlogService blogService;
